@@ -11,7 +11,7 @@ class RestCalls():
             'application/yang.errors+{fmt}',
         ]
         self.ContentType = 'application/yang.data+{fmt}'
-        self.session = requests.Session()
+        session = requests.Session()
         self.Format = 'json'
         if username is not None and password is not None:
             session.auth = (username, password)
