@@ -30,45 +30,21 @@ class RestCalls():
         )
 
     def put(self, data, endpoint):
-        """PUT RESTconf call
-            :param data: JSON or XML with config changes
-            :type data: str
-            :return: Return the response object
-            :rtype: Response object
-        """
         url = self._host + endpoint
         res = self._session.put(url, data=data)
         return res
 
     def post(self, data, endpoint):
-        """POST RESTconf call
-            :param data: JSON or XML file with config changes
-            :type data: str
-            :return: Return the response object
-            :rtype: Response object
-        """
         url = self._host + endpoint
         res = self._session.post(url, data=data)
         return res
 
     def patch(self, data, endpoint):
-        """PATCH RESTconf call
-            :param data: JSON or XML with config changes
-            :type data: str
-            :return: Return the response object
-            :rtype: Response object
-        """
         url = self._host + endpoint
         res = self._session.patch(url, data=data)
         return res
 
     def get(self, endpoint='', **kwargs):
-        """GET RESTconf call
-            :param endpoint: String selection of YANG model and container
-            :type endpoint: str
-            :return: Return the response object
-            :rtype: Response object
-        """
         url = self._host + endpoint
         if 'content' not in kwargs:
             kwargs = {'content': 'config'}
@@ -77,12 +53,6 @@ class RestCalls():
         return res
 
     def delete(self, endpoint):
-        """GET RESTconf call
-            :param endpoint: String selection of YANG model and container
-            :type endpoint: str
-            :return: Return the response object
-            :rtype: Response object
-        """
         url = self._host + endpoint
         res = self._session.delete(url)
         return res
