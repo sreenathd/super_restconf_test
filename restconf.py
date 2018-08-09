@@ -1,17 +1,7 @@
 import requests
-import abc
 
 
-class RestCalls(object):
-    """This class creates RESTconf calls using python.
-        :param username: Username for device login
-        :param password: Password for device login
-        :param ip_address_port: The ip address and port number for the device
-        :type password: str
-        :type username: str
-        :type ip_address_port: str
-    """
-    __metaclass__ = abc.ABCMeta
+class RestCalls():
     BasePath = '/restconf/data'
     Accept = [
         'application/yang.data+{fmt}',
@@ -21,6 +11,7 @@ class RestCalls(object):
 
     def __init__(self, ip_address, port=80, username=None, password=None):
         session = requests.Session()
+        self.Format = 'json'
         if username is not None and password is not None:
             session.auth = (username, password)
         session.headers.update({
