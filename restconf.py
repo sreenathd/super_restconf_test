@@ -2,14 +2,14 @@ import requests
 
 
 class RestCalls():
-    BasePath = '/restconf/data'
-    Accept = [
-        'application/yang.data+{fmt}',
-        'application/yang.errors+{fmt}',
-    ]
-    ContentType = 'application/yang.data+{fmt}'
 
     def __init__(self, ip_address, port=80, username=None, password=None):
+        BasePath = '/restconf/data/running/openconfig-system:system'
+        Accept = [
+            'application/yang.data+{fmt}',
+            'application/yang.errors+{fmt}',
+        ]
+        ContentType = 'application/yang.data+{fmt}'
         session = requests.Session()
         self.Format = 'json'
         if username is not None and password is not None:
@@ -67,15 +67,11 @@ class RestCalls():
             :type endpoint: str
             :return: Return the response object
             :rtype: Response object
-            kwargs would be the type of content. See the ietf's restconf
-            draft section 4.8.1 (expires October 2016). Options:
-            config -- Return only configuration descendant data nodes
-            nonconfig -- Return only non-configuration descendant data nodes
-            all -- Return all descendant data nodes
         """
         url = self._host + endpoint
         if 'content' not in kwargs:
             kwargs = {'content': 'config'}
+        print(url)
         res = self._session.get(url, params=kwargs)
         return res
 
@@ -89,3 +85,19 @@ class RestCalls():
         url = self._host + endpoint
         res = self._session.delete(url)
         return res
+    
+def update_conf():
+    ip = os.environ.get('SWITCH_IP')
+    print(ip)
+    port = os.environ.get('SWITCH_PORT')
+    print(port)
+    user = os.environ.get('REST_USER')
+    print(user)
+    pswd = os.environ.get('REST_PSWD')
+    print(pswd)
+    return [ip,port,user,pswd]
+    
+def get(uri=''):
+    resp = update_conf()
+    rest_session = RestCalls(resp[0],resp[1],resp[2],resp[3])
+    rest_session.get(uri)
