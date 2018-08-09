@@ -13,7 +13,10 @@ My Test
 
 Another Test
     Should Be Equal    ${MESSAGE}    Hello, world!
-
+    
+Get Test
+    get    '/config/hostname '
+    
 *** Keywords ***
 My Keyword
     [Arguments]    ${path}
