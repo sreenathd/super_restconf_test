@@ -15,7 +15,8 @@ Another Test
     Should Be Equal    ${MESSAGE}    Hello, world!
     
 Get Test
-    get    '/config/hostname '
+    ${result}=  get    '/config/hostname '
+    Should Be Equal  ${result.status_code}  ${200}
     
 *** Keywords ***
 My Keyword
