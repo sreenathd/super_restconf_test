@@ -100,4 +100,5 @@ def update_conf():
 def get(uri=''):
     resp = update_conf()
     rest_session = RestCalls(resp[0],resp[1],resp[2],resp[3])
-    rest_session.get(uri)
+    resp = rest_session.get(uri)
+    return resp
