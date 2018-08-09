@@ -1,5 +1,6 @@
 *** Settings ***
 Library       OperatingSystem
+Library       RestConf
 
 *** Variables ***
 ${MESSAGE}    Hello, world!
