@@ -5,13 +5,13 @@ import os
 class RestCalls():
 
     def __init__(self, ip_address, port=80, username=None, password=None):
-        BasePath = '/restconf/data/running/openconfig-system:system'
-        Accept = [
+        self.BasePath = '/restconf/data/running/openconfig-system:system'
+        self.Accept = [
             'application/yang.data+{fmt}',
             'application/yang.errors+{fmt}',
         ]
-        ContentType = 'application/yang.data+{fmt}'
-        session = requests.Session()
+        self.ContentType = 'application/yang.data+{fmt}'
+        self.session = requests.Session()
         self.Format = 'json'
         if username is not None and password is not None:
             session.auth = (username, password)
