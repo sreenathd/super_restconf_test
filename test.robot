@@ -24,3 +24,4 @@ Verify Hostname
 My Keyword
     [Arguments]    ${path}
     Directory Should Exist    ${path}
+Create VLAN
