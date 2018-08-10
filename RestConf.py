@@ -24,7 +24,7 @@ class RestCalls():
         })
         self._session = session
         self._host = '{scheme}://{ip}:{port}{basePath}/'.format(
-            scheme='https',
+            scheme='http',
             ip=ip_address,
             port=port,
             basePath=self.BasePath
