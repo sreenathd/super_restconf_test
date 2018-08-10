@@ -15,7 +15,7 @@ Another Test
     Should Be Equal    ${MESSAGE}    Hello, world!
     
 Verify Hostname
-    ${result}=  get    config/hostname 
+    ${result}=  get    config 
     Should Be Equal  ${result.status_code}  ${200}
     ${json}=  Set Variable  ${result.json()}
     Log    ${json}
