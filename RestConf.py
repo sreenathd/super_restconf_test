@@ -1,7 +1,6 @@
 import requests
 import os
 
-
 class RestCalls():
 
     def __init__(self, ip_address, port=80, username=None, password=None):
@@ -97,3 +96,4 @@ def patch(uri='',data=None):
     rest_session = RestCalls(resp[0],resp[1],resp[2],resp[3])
     resp = rest_session.patch(data,uri)
     return resp
+
