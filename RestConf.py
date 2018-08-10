@@ -14,6 +14,7 @@ class RestCalls():
         self.Format = 'json'
         if username is not None and password is not None:
             session.auth = (username, password)
+        session.verify = False
         session.headers.update({
             'Accept': ','.join([
                 accept.format(fmt=self.Format) for accept in self.Accept
