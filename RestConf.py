@@ -73,3 +73,27 @@ def get(uri=''):
     rest_session = RestCalls(resp[0],resp[1],resp[2],resp[3])
     resp = rest_session.get(uri)
     return resp
+
+def delete(uri=''):
+    resp = update_conf()
+    rest_session = RestCalls(resp[0],resp[1],resp[2],resp[3])
+    resp = rest_session.delete(uri)
+    return resp
+
+def post(uri='',data=None):
+    resp = update_conf()
+    rest_session = RestCalls(resp[0],resp[1],resp[2],resp[3])
+    resp = rest_session.post(data,uri)
+    return resp
+
+def put(uri='',data=None):
+    resp = update_conf()
+    rest_session = RestCalls(resp[0],resp[1],resp[2],resp[3])
+    resp = rest_session.put(data,uri)
+    return resp
+
+def patch(uri='',data=None):
+    resp = update_conf()
+    rest_session = RestCalls(resp[0],resp[1],resp[2],resp[3])
+    resp = rest_session.patch(data,uri)
+    return resp
