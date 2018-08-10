@@ -46,6 +46,7 @@ class RestCalls():
 
     def get(self, endpoint='', **kwargs):
         url = self._host + endpoint
+        print(url)
         if 'content' not in kwargs:
             kwargs = {'content': 'config'}
         print(url)
