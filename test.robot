@@ -15,7 +15,7 @@ Another Test
     Should Be Equal    ${MESSAGE}    Hello, world!
     
 Get Test
-    ${result}=  get    native/hostname 
+    ${result}=  get    config/hostname 
     Should Be Equal  ${result.status_code}  ${200}
     
 *** Keywords ***
