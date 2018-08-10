@@ -4,7 +4,8 @@ import os
 class RestCalls():
 
     def __init__(self, ip_address, port=80, username=None, password=None):
-        self.BasePath = '/restconf/data/running/openconfig-system:system'
+        #self.BasePath = '/restconf/data/running/openconfig-system:system'
+        self.BasePath = '/api/running'
         self.Accept = [
             'application/yang.data+{fmt}',
             'application/yang.errors+{fmt}',
