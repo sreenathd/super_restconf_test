@@ -8,14 +8,14 @@ ${MESSAGE}    Hello, world!
 
 *** Test Cases ***
 Verify Hostname
-    ${result}=  get    system:system/config 
+    ${result}=  get    get?foo1=bar1&foo2=bar2 
     Should Be Equal  ${result.status_code}  ${200}
     ${json}=  Set Variable  ${result.json()}
     Log    ${json}
     json property should equal    ${json}    system:system    config 
     
 Verify Post
-    ${result}=  post    system:interface/vlan    {"id": "1"}
+    ${result}=  post    post    {"id": "1"}
     Should Be Equal  ${result.status_code}  ${200}
     ${json}=  Set Variable  ${result.json()}
     Log    ${json}
