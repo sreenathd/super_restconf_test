@@ -12,14 +12,14 @@ Verify Hostname
     Should Be Equal  ${result.status_code}  ${200}
     ${json}=  Set Variable  ${result.json()}
     Log    ${json}
-    json property should equal    ${json}    foo1    bar1
+    json property should equal    ${json}    args    {u'content': u'config', u'foo1': u'bar1', u'foo2': u'bar2'}
     
 Verify Post
     ${result}=  post    post    {"id": "1"}
     Should Be Equal  ${result.status_code}  ${200}
     ${json}=  Set Variable  ${result.json()}
     Log    ${json}
-    json property should equal    ${json}    id    1  
+    json property should equal    ${json}    data    {u'id': u'1'}  
     
 *** Keywords ***
 json_property_should_equal    
