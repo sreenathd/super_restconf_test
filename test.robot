@@ -15,7 +15,7 @@ Verify Hostname
     json property should equal    ${json}    system:system    config 
     
 Verify Post
-    ${result}=  post    system:system/config 
+    ${result}=  post    system:system/config    {"system:system": "config"}
     Should Be Equal  ${result.status_code}  ${200}
     ${json}=  Set Variable  ${result.json()}
     Log    ${json}
