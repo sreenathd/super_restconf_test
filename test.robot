@@ -14,6 +14,13 @@ Verify Hostname
     Log    ${json}
     json property should equal    ${json}    system:system    config 
     
+Verify Post
+    ${result}=  post    system:system/config 
+    Should Be Equal  ${result.status_code}  ${200}
+    ${json}=  Set Variable  ${result.json()}
+    Log    ${json}
+    json property should equal    ${json}    system:system    config  
+    
 *** Keywords ***
 json_property_should_equal    
     [Arguments]  ${json}  ${property}  ${value_expected}
