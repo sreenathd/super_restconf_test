@@ -68,6 +68,8 @@ def update_conf():
     print(user)
     pswd = os.environ.get('REST_PSWD')
     print(pswd)
+    user = None
+    pswd = None
     return [ip,port,user,pswd]
     
 def get(uri=''):
