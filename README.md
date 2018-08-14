@@ -1,2 +1,2 @@
-# supermicro_restconf_test
-supermicro_restconf_test_cases
+# super_restconf_test
+super_restconf_test_cases
