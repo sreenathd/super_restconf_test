@@ -7,19 +7,28 @@ Library    Collections
 ${MESSAGE}    Hello, world!
 
 *** Test Cases ***
-Verify Hostname
-    ${result}=  get    get?foo1=bar1&foo2=bar2 
+Get Hostname
+    ${result}=  get    system:system/config
     Should Be Equal  ${result.status_code}  ${200}
     ${json}=  Set Variable  ${result.json()}
     Log    ${json}
-    json property should equal    ${json}    args    {u'content': u'config', u'foo1': u'bar1', u'foo2': u'bar2'}
+Put Hostname
+    ${putresult}=  put    system:system/config    {"config":{"hostname":"Switch1"}}
+    Should Be Equal  ${putresult.status_code}  ${200}
+    ${result}=  get    system:system/config
+    Should Be Equal  ${result.status_code}  ${200}
+    ${json}=  Set Variable  ${result.json()}
+    Log    ${json}
+    json property should equal    ${json}    openconfig-system:system    {"config":{"hostname":"Switch1"}}  
+Post Vlan
+    ${postresult}=    post    vlan:vlans    {"vlan-id":33}
+    Should Be Equal  ${postresult.status_code}  ${200}
+    ${result}=  get    vlan:vlans/vlan=33/config/vlan-id
+    Should Be Equal  ${result.status_code}  ${200}
+    ${json}=  Set Variable  ${result.json()}
+    Log    ${json}
+    json property should equal    ${json}    openconfig-vlan:vlans    {"vlan":[{"config":{"vlan-id":33},"vlan-id":33}]}
     
-Verify Post
-    ${result}=  post    post    {"id": "1"}
-    Should Be Equal  ${result.status_code}  ${200}
-    ${json}=  Set Variable  ${result.json()}
-    Log    ${json}
-    json property should equal    ${json}    data    {u'id': u'1'}  
     
 *** Keywords ***
 json_property_should_equal    
