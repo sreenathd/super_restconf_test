@@ -4,8 +4,8 @@ import os
 class RestCalls():
 
     def __init__(self, ip_address, port=80, username=None, password=None):
-        #self.BasePath = '/restconf/data/running/openconfig-'
-        self.BasePath = ''
+        self.BasePath = '/restconf/data/running/openconfig-'
+        #self.BasePath = ''
         self.Accept = [
             'application/yang.data+{fmt}',
             'application/yang.errors+{fmt}',
@@ -32,16 +32,19 @@ class RestCalls():
 
     def put(self, data, endpoint):
         url = self._host + endpoint
+        print(url)
         res = self._session.put(url, data=data)
         return res
 
     def post(self, data, endpoint):
         url = self._host + endpoint
+        print(url)
         res = self._session.post(url, data=data)
         return res
 
     def patch(self, data, endpoint):
         url = self._host + endpoint
+        print(url)
         res = self._session.patch(url, data=data)
         return res
 
@@ -56,6 +59,7 @@ class RestCalls():
 
     def delete(self, endpoint):
         url = self._host + endpoint
+        print(url)
         res = self._session.delete(url)
         return res
     
