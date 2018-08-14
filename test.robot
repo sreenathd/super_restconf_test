@@ -8,11 +8,13 @@ ${MESSAGE}    Hello, world!
 
 *** Test Cases ***
 Get Hostname
+    [tags] get hostname
     ${result}=  get    system:system/config
     Should Be Equal  ${result.status_code}  ${200}
     ${json}=  Set Variable  ${result.json()}
     Log    ${json}
 Put Hostname
+    [tags] put hostname
     ${putresult}=  put    system:system/config    {"config":{"hostname":"Switch1"}}
     Should Be Equal  ${putresult.status_code}  ${200}
     ${result}=  get    system:system/config
@@ -21,6 +23,7 @@ Put Hostname
     Log    ${json}
     json property should equal    ${json}    openconfig-system:system    {"config":{"hostname":"Switch1"}}  
 Post Vlan
+    [tags] post vlan
     ${postresult}=    post    vlan:vlans    {"vlan-id":33}
     Should Be Equal  ${postresult.status_code}  ${204}
     ${result}=  get    vlan:vlans/vlan=33/config/vlan-id
@@ -29,6 +32,7 @@ Post Vlan
     Log    ${json}
     json property should equal    ${json}    openconfig-vlan:vlans    {"vlan":[{"config":{"vlan-id":33},"vlan-id":33}]}
 Patch Vlan
+    [tags] patch vlan
     ${patchresult}=    patch    vlan:vlans/vlan=33/config/vlan-id    {"config":{"name":"lab-test-vlan"},"vlan-id":33}
     Should Be Equal  ${patchresult.status_code}  ${204}
     ${result}=  get    vlan:vlans/vlan=33/config/vlan-id
@@ -37,6 +41,7 @@ Patch Vlan
     Log    ${json}
     json property should equal    ${json}    openconfig-vlan:vlans    {"vlan":[{"config":{"name":"lab-test-vlan"},"vlan-id":33}]}   
 Delete VLAN
+    [tags] delete vlan
     ${delresult}=    delete    vlan:vlans/vlan=33
     Log    ${delresult.status_code}
     Should Be Equal  ${delresult.status_code}  ${204}
