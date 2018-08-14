@@ -58,8 +58,14 @@ class RestCalls():
         res = self._session.delete(url)
         return res
         
- class SuperMicro():
-     def __init__(self, ip_address, port=80, username=None, password=None):
-         self.switch =  RestCalls()
-     def get_hostname():
-          self.switch.get('system:sytem/config')
+class SuperMicro():
+    def __init__(self, ip_address='', port=8538, username='ADMIN', password='ADMIN'):
+        self.switch =  RestCalls(ip_address, port, username, password)
+    def get_hostname():
+        resp = self.switch.get('system:sytem/config')
+        return resp.text()
+            
+if  __name__=='__main__':
+    switch1 = SuperMicro('10.197.104.102')
+    hostname = switch1.get_hostname()
+    
