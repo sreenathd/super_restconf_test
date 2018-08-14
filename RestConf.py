@@ -24,7 +24,7 @@ class RestCalls():
         })
         self._session = session
         self._host = '{scheme}://{ip}:{port}{basePath}/'.format(
-            scheme='https',
+            scheme='http',
             ip=ip_address,
             port=port,
             basePath=self.BasePath
@@ -72,8 +72,6 @@ def update_conf():
     print(user)
     pswd = os.environ.get('REST_PSWD')
     print(pswd)
-    user=None
-    pswd=None
     return [ip,port,user,pswd]
     
 def get(uri=''):
