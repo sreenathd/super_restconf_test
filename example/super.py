@@ -67,7 +67,7 @@ class SuperMicro():
         print (resp.text)
         return resp
     def create_vlan(self,vid = 0):
-        data = '{\"vlan-id\":' + vid + '}'
+        data = '{\"vlan-id\":' + str(vid) + '}'
         resp = self.switch.post('vlan:vlans',data)
         if 200 == resp.status_code:
             return 'Success'
