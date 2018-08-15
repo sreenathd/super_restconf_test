@@ -64,7 +64,7 @@ class RestCalls():
         res = self._session.delete(url)
         return res
     
-def update_conf():
+def get_session():
     ip = os.environ.get('SWITCH_IP')
     print(ip)
     port = os.environ.get('SWITCH_PORT')
@@ -73,38 +73,34 @@ def update_conf():
     print(user)
     pswd = os.environ.get('REST_PSWD')
     print(pswd)
-    return [ip,port,user,pswd]
-    
+    rest_session = RestCalls(ip,port,user,pswd)
+    return rest_session
+
 def get(uri=''):
-    resp = update_conf()
-    rest_session = RestCalls(resp[0],resp[1],resp[2],resp[3])
+    rest_session = get_session()
     resp = rest_session.get(uri)
     return resp
 
 def delete(uri=''):
-    resp = update_conf()
-    rest_session = RestCalls(resp[0],resp[1],resp[2],resp[3])
+    rest_session = get_session()
     resp = rest_session.delete(uri)
     return resp
 
 def post(uri='',data=None):
-    data = json.loads(data)
-    resp = update_conf()
-    rest_session = RestCalls(resp[0],resp[1],resp[2],resp[3])
+    print(data)
+    rest_session = get_session()
     resp = rest_session.post(data,uri)
     return resp
 
 def put(uri='',data=None):
-    data = json.loads(data)
-    resp = update_conf()
-    rest_session = RestCalls(resp[0],resp[1],resp[2],resp[3])
+    print(data)
+    rest_session = get_session()
     resp = rest_session.put(data,uri)
     return resp
 
 def patch(uri='',data=None):
-    data = json.loads(data)
-    resp = update_conf()
-    rest_session = RestCalls(resp[0],resp[1],resp[2],resp[3])
+    print(data)
+    rest_session = get_session()
     resp = rest_session.patch(data,uri)
     return resp
 
