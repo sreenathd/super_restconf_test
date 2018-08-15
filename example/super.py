@@ -73,7 +73,7 @@ class SuperMicro():
             return 'Fail'
             
 if  __name__=='__main__':
-    switch1 = SuperMicro('10.197.104.102')
+    switch1 = SuperMicro('172.31.57.16')
     hostname = switch1.get_hostname()
     status = switch1.create_vlan(33)
     print (status)
