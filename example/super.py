@@ -78,7 +78,7 @@ class SuperMicro():
             
 if  __name__=='__main__':
     switch1 = SuperMicro('172.31.57.16')
-    print (get hostname)
+    print ("get hostname")
     hostname = switch1.get_hostname()
     status = switch1.create_vlan(33)
     print (status)
