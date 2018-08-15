@@ -23,7 +23,7 @@ class RestCalls():
             'Content-Type': self.ContentType.format(fmt=self.Format),
         })
         self._session = session
-        self._host = '{scheme}://{ip}:{port}{basePath}/'.format(
+        self._host = '{scheme}://{ip}:{port}{basePath}'.format(
             scheme='http',
             ip=ip_address,
             port=port,
