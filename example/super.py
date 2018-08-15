@@ -64,8 +64,15 @@ class SuperMicro():
     def get_hostname():
         resp = self.switch.get('system:sytem/config')
         return resp.text()
+    def create_vlan(vid = 0):
+        data = '{\"vlan-id\":' + vid + '}'
+        resp = self.switch.post('vlan:vlans',data)
+        if 200 == resp.status_code:
+            return Success
+        else:
+            return Fail
             
 if  __name__=='__main__':
     switch1 = SuperMicro('10.197.104.102')
     hostname = switch1.get_hostname()
-    
+    status = switch1.create_vlan(33)
