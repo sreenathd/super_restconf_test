@@ -63,7 +63,9 @@ class SuperMicro():
         self.switch =  RestCalls(ip_address, port, username, password)
     def get_hostname(self):
         resp = self.switch.get('system:sytem/config')
-        return resp.text()
+        print (resp.status_code)
+        print (resp.text)
+        return resp
     def create_vlan(self,vid = 0):
         data = '{\"vlan-id\":' + vid + '}'
         resp = self.switch.post('vlan:vlans',data)
