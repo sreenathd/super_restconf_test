@@ -1,5 +1,6 @@
 import requests
 import os
+import json
 
 class RestCalls():
 
@@ -87,18 +88,21 @@ def delete(uri=''):
     return resp
 
 def post(uri='',data=None):
+    data = json.loads(data)
     resp = update_conf()
     rest_session = RestCalls(resp[0],resp[1],resp[2],resp[3])
     resp = rest_session.post(data,uri)
     return resp
 
 def put(uri='',data=None):
+    data = json.loads(data)
     resp = update_conf()
     rest_session = RestCalls(resp[0],resp[1],resp[2],resp[3])
     resp = rest_session.put(data,uri)
     return resp
 
 def patch(uri='',data=None):
+    data = json.loads(data)
     resp = update_conf()
     rest_session = RestCalls(resp[0],resp[1],resp[2],resp[3])
     resp = rest_session.patch(data,uri)
