@@ -8,10 +8,10 @@ class RestCalls():
         self.BasePath = '/restconf/data/running/openconfig-'
         #self.BasePath = ''
         self.Accept = [
-            'application/yang.data+json',
-            'application/yang.errors+json',
+            'application/yang.data+{fmt}',
+            'application/yang.errors+{fmt}',
         ]
-        self.ContentType = 'application/yang.data+json'
+        self.ContentType = 'application/yang.data+{fmt}'
         session = requests.Session()
         self.Format = 'json'
         if username is not None and password is not None:
