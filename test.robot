@@ -38,7 +38,7 @@ Post Vlan
     [Documentation]    Create vlan in switch
     [Tags]    post    vlan
     ${postresult}=    post    vlan:vlans    {"vlan-id":33}
-    Should Be Equal  ${postresult.status_code}  ${204}
+    Should Be Equal  ${postresult.status_code}  ${201}
     ${result}=  get    vlan:vlans/vlan=33/config/vlan-id
     Should Be Equal  ${result.status_code}  ${200}
     ${json}=  Set Variable  ${result.json()}
