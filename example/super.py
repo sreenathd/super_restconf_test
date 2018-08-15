@@ -69,6 +69,8 @@ class SuperMicro():
     def create_vlan(self,vid = 0):
         data = '{\"vlan-id\":' + str(vid) + '}'
         resp = self.switch.post('vlan:vlans',data)
+        print (resp.status_code)
+        print (resp.text)
         if 200 == resp.status_code:
             return 'Success'
         else:
@@ -76,6 +78,7 @@ class SuperMicro():
             
 if  __name__=='__main__':
     switch1 = SuperMicro('172.31.57.16')
+    print (get hostname)
     hostname = switch1.get_hostname()
     status = switch1.create_vlan(33)
     print (status)
