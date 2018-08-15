@@ -8,10 +8,10 @@ class RestCalls():
         self.BasePath = '/restconf/data/running/openconfig-'
         #self.BasePath = ''
         self.Accept = [
-            'application/yang.data+{fmt}',
-            'application/yang.errors+{fmt}',
+            'application/yang.data+json',
+            'application/yang.errors+json',
         ]
-        self.ContentType = 'application/yang.data+{fmt}'
+        self.ContentType = 'application/yang.data+json'
         session = requests.Session()
         self.Format = 'json'
         if username is not None and password is not None:
@@ -88,21 +88,21 @@ def delete(uri=''):
     return resp
 
 def post(uri='',data=None):
-    data = json.loads(data)
+    #data = json.loads(data)
     resp = update_conf()
     rest_session = RestCalls(resp[0],resp[1],resp[2],resp[3])
     resp = rest_session.post(data,uri)
     return resp
 
 def put(uri='',data=None):
-    data = json.loads(data)
+    #data = json.loads(data)
     resp = update_conf()
     rest_session = RestCalls(resp[0],resp[1],resp[2],resp[3])
     resp = rest_session.put(data,uri)
     return resp
 
 def patch(uri='',data=None):
-    data = json.loads(data)
+    #data = json.loads(data)
     resp = update_conf()
     rest_session = RestCalls(resp[0],resp[1],resp[2],resp[3])
     resp = rest_session.patch(data,uri)
