@@ -61,10 +61,10 @@ class RestCalls():
 class SuperMicro():
     def __init__(self, ip_address='', port=8538, username='ADMIN', password='ADMIN'):
         self.switch =  RestCalls(ip_address, port, username, password)
-    def get_hostname():
+    def get_hostname(self):
         resp = self.switch.get('system:sytem/config')
         return resp.text()
-    def create_vlan(vid = 0):
+    def create_vlan(self,vid = 0):
         data = '{\"vlan-id\":' + vid + '}'
         resp = self.switch.post('vlan:vlans',data)
         if 200 == resp.status_code:
