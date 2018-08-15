@@ -18,7 +18,7 @@ Put Hostname
     [Documentation]    Change host name of switch
     [Tags]    put    hostname
     ${putresult}=  put    system:system/config    {"config":{"hostname":"Switch1"}}
-    Should Be Equal  ${putresult.status_code}  ${200}
+    Should Be Equal  ${putresult.status_code}  ${204}
     ${result}=  get    system:system/config
     Should Be Equal  ${result.status_code}  ${200}
     ${json}=  Set Variable  ${result.json()}
