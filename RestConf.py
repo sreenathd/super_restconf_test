@@ -67,8 +67,8 @@ class RestCalls():
     def delete(self, endpoint):
         url = self._host + endpoint
         print(url)
-        #res = self._session.delete(url)
-        res = requests.delete(url, headers=self.headers, auth=self.auth)
+        res = self._session.delete(url)
+        #res = requests.delete(url, headers=self.headers, auth=self.auth)
         return res
     
 def get_session():
