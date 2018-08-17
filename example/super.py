@@ -48,6 +48,7 @@ class RestCalls():
 
     def patch(self, data, endpoint):
         url = self._host + endpoint
+        print(data)
         print(url)
         res = requests.patch(url, headers=self.headers, data=data, auth=self.auth)
         return res
@@ -58,13 +59,16 @@ class RestCalls():
         if 'content' not in kwargs:
             kwargs = {'content': 'config'}
         print(url)
-        res = self._session.get(url, params=kwargs)
+        #res = self._session.get(url, params=kwargs)
+        res = requests.get(url, headers=self.headers, auth=self.auth)
         return res
 
     def delete(self, endpoint):
         url = self._host + endpoint
         print(url)
         res = self._session.delete(url)
+        #res = requests.delete(url, headers=self.headers, auth=self.auth)
+        #res = requests.delete('http://172.31.57.16:8538/restconf/data/running/openconfig-vlan:vlans/vlan=33', auth=('ADMIN', 'ADMIN'))
         return res
         
 class SuperMicro():
