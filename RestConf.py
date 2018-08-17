@@ -93,7 +93,7 @@ def post(uri='',data=None):
     headers = {
         'Content-Type': 'application/yang-data+json',
     }
-    resp = requests.post('http://172.32.57.16:8538/restconf/data/running/openconfig-vlan:vlans', headers=headers, data=data, auth=('ADMIN', 'ADMIN'))
+    resp = requests.post('http://172.31.57.16:8538/restconf/data/running/openconfig-vlan:vlans', headers=headers, data=data, auth=('ADMIN', 'ADMIN'))
     return resp
 
 def put(uri='',data=None):
