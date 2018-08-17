@@ -34,7 +34,7 @@ Patch Hostname
     Should Be Equal  ${result.status_code}  ${200}
     ${json}=  Set Variable  ${result.json()}
     Log    ${json}
-    json property should equal    ${json}    openconfig-system:system    {u'config':{u'hostname':u'Switch1'}}  
+    json property should equal    ${json}    openconfig-system:system    {u'config': {u'hostname': u'Switch1'}}  
 Post Vlan
     [Documentation]    Create vlan in switch
     [Tags]    post    vlan
