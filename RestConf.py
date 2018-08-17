@@ -91,11 +91,8 @@ def get(uri=''):
 def delete(uri=''):
     rest_session = get_session()
     #resp = rest_session.delete(uri)
-    headers = {
-        'Content-Type': 'application/yang-data+json',
-    }
     #data = '{"config":{"name":"lab-test-vlan33"},"vlan-id":33}'
-    resp = requests.delete('http://172.31.57.16:8538/restconf/data/running/openconfig-vlan:vlans/vlan=33', headers=headers, auth=('ADMIN', 'ADMIN'))
+    resp = requests.delete('http://172.31.57.16:8538/restconf/data/running/openconfig-vlan:vlans/vlan=33', auth=('ADMIN', 'ADMIN'))
     return resp
 
 def post(uri='',data=None):
