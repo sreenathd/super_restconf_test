@@ -66,9 +66,8 @@ class RestCalls():
     def delete(self, endpoint):
         url = self._host + endpoint
         print(url)
-        res = self._session.delete(url)
-        #res = requests.delete(url, headers=self.headers, auth=self.auth)
-        #res = requests.delete('http://172.31.57.16:8538/restconf/data/running/openconfig-vlan:vlans/vlan=33', auth=('ADMIN', 'ADMIN'))
+        #res = self._session.delete(url)
+        res = requests.delete(url, auth=self.auth)
         return res
         
 class SuperMicro():
