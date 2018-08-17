@@ -89,7 +89,8 @@ def delete(uri=''):
 def post(uri='',data=None):
     print(data)
     rest_session = get_session()
-    resp = rest_session.post(data,uri)
+    #response = rest_session.post(data,uri)
+    resp = requests.post('http://172.32.57.16:8538/restconf/data/running/openconfig-vlan:vlans', headers=headers, data=data, auth=('ADMIN', 'ADMIN'))
     return resp
 
 def put(uri='',data=None):
