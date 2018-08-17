@@ -37,7 +37,7 @@ Patch Hostname
 Post Vlan
     [Documentation]    Create vlan in switch
     [Tags]    post    vlan
-    ${postresult}=    post    vlan:vlans    {"vlan-id":33}
+    ${postresult}=    post    vlan:vlans    {"vlan-id":34}
     Should Be Equal  ${postresult.status_code}  ${201}
     ${result}=  get    vlan:vlans/vlan=33/config/vlan-id
     Should Be Equal  ${result.status_code}  ${200}
@@ -57,7 +57,7 @@ Patch Vlan
 Delete VLAN
     [Documentation]    delete vlan in switch
     [Tags]    delete    vlan
-    ${delresult}=    delete    vlan:vlans/vlan=33
+    ${delresult}=    delete    vlan:vlans/vlan=34
     Log    ${delresult.status_code}
     Should Be Equal  ${delresult.status_code}  ${204}
     ${result}=  get    vlan:vlans/vlan=33/config/vlan-id
