@@ -2,6 +2,7 @@
 Library       OperatingSystem
 Library       RestConf
 Library    Collections
+Test Setup      Test Setup KW
 
 *** Variables ***
 ${MESSAGE}    Hello, world!
@@ -37,7 +38,7 @@ Patch Hostname
 Post Vlan
     [Documentation]    Create vlan in switch
     [Tags]    post    vlan
-    ${postresult}=    post    vlan:vlans    {"vlan-id":34}
+    ${postresult}=    post    vlan:vlans    {"vlan-id":33}
     Should Be Equal  ${postresult.status_code}  ${201}
     ${result}=  get    vlan:vlans/vlan=33/config/vlan-id
     Should Be Equal  ${result.status_code}  ${200}
@@ -57,12 +58,11 @@ Patch Vlan
 Delete VLAN
     [Documentation]    delete vlan in switch
     [Tags]    delete    vlan
-    ${delresult}=    delete    vlan:vlans/vlan=34
+    ${delresult}=    delete    vlan:vlans/vlan=33
     Log    ${delresult.status_code}
     Should Be Equal  ${delresult.status_code}  ${204}
     ${result}=  get    vlan:vlans/vlan=33/config/vlan-id
     Should Be Equal  ${result.status_code}  ${404}
-    
 Post Log host
     [Documentation]    Post Log Host
     [Tags]    post    log
@@ -71,7 +71,10 @@ Post Log host
 
     
 *** Keywords ***
-json_property_should_equal    
+Test Setup KW
+    delete    vlan:vlans/vlan=33
+    
+json property should equal    
     [Arguments]  ${json}  ${property}  ${value_expected}
     ${value_found} =    Get From Dictionary  ${json}  ${property}
     ${error_message} =  Catenate  SEPARATOR=  Expected value for property "  ${property}  " was "  ${value_expected}  " but found "  ${value_found}  "
