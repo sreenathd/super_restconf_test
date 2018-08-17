@@ -90,7 +90,12 @@ def get(uri=''):
 
 def delete(uri=''):
     rest_session = get_session()
-    resp = rest_session.delete(uri)
+    #resp = rest_session.delete(uri)
+    headers = {
+        'Content-Type': 'application/yang-data+json',
+    }
+    #data = '{"config":{"name":"lab-test-vlan33"},"vlan-id":33}'
+    resp = requests.delete('http://172.31.57.16:8538/restconf/data/running/openconfig-vlan:vlans/vlan=33/config/vlan-id', headers=headers, auth=('ADMIN', 'ADMIN'))
     return resp
 
 def post(uri='',data=None):
@@ -108,6 +113,11 @@ def put(uri='',data=None):
 def patch(uri='',data=None):
     print(data)
     rest_session = get_session()
-    resp = rest_session.patch(data,uri)
+    #resp = rest_session.patch(data,uri)
+    headers = {
+        'Content-Type': 'application/yang-data+json',
+    }
+    #data = '{"config":{"name":"lab-test-vlan33"},"vlan-id":33}'
+    resp = requests.patch('http://172.31.57.16:8538/restconf/data/running/openconfig-vlan:vlans/vlan=33/config/vlan-id', headers=headers, data=data, auth=('ADMIN', 'ADMIN'))
     return resp
 
