@@ -59,13 +59,15 @@ class RestCalls():
         if 'content' not in kwargs:
             kwargs = {'content': 'config'}
         print(url)
-        res = self._session.get(url, params=kwargs)
+        #res = self._session.get(url, params=kwargs)
+        res = requests.get(url, headers=self.headers, auth=self.auth)
         return res
 
     def delete(self, endpoint):
         url = self._host + endpoint
         print(url)
-        res = self._session.delete(url)
+        #res = self._session.delete(url)
+        res = requests.delete(url, headers=self.headers, auth=self.auth)
         return res
     
 def get_session():
