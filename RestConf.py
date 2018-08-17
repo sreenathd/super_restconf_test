@@ -30,23 +30,27 @@ class RestCalls():
             port=port,
             basePath=self.BasePath
         )
+        self.headers = {
+            'Content-Type': 'application/yang-data+json',
+        }
+        self.auth  = (username, password)
 
     def put(self, data, endpoint):
         url = self._host + endpoint
         print(url)
-        res = self._session.put(url, data=data)
+        res = requests.put(url, headers=self.headers, data=data, auth=self.auth)
         return res
 
     def post(self, data, endpoint):
         url = self._host + endpoint
         print(url)
-        res = self._session.post(url, data=data)
+        res = requests.post(url, headers=self.headers, data=data, auth=self.auth)
         return res
 
     def patch(self, data, endpoint):
         url = self._host + endpoint
         print(url)
-        res = self._session.patch(url, data=data)
+        res = requests.patch(url, headers=self.headers, data=data, auth=self.auth)
         return res
 
     def get(self, endpoint='', **kwargs):
@@ -89,11 +93,7 @@ def delete(uri=''):
 def post(uri='',data=None):
     print(data)
     rest_session = get_session()
-    #response = rest_session.post(data,uri)
-    headers = {
-        'Content-Type': 'application/yang-data+json',
-    }
-    resp = requests.post('http://172.31.57.16:8538/restconf/data/running/openconfig-vlan:vlans', headers=headers, data=data, auth=('ADMIN', 'ADMIN'))
+    resp = rest_session.post(data,uri)
     return resp
 
 def put(uri='',data=None):
