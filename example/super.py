@@ -5,6 +5,7 @@ class RestCalls():
 
     def __init__(self, ip_address, port=80, username=None, password=None):
         self.BasePath = '/restconf/data/running/openconfig-'
+        #self.BasePath = ''
         self.Accept = [
             'application/yang.data+{fmt}',
             'application/yang.errors+{fmt}',
@@ -28,20 +29,27 @@ class RestCalls():
             port=port,
             basePath=self.BasePath
         )
+        self.headers = {
+            'Content-Type': 'application/yang-data+json',
+        }
+        self.auth  = (username, password)
 
     def put(self, data, endpoint):
         url = self._host + endpoint
-        res = self._session.put(url, data=data)
+        print(url)
+        res = requests.put(url, headers=self.headers, data=data, auth=self.auth)
         return res
 
     def post(self, data, endpoint):
         url = self._host + endpoint
-        res = self._session.post(url, data=data)
+        print(url)
+        res = requests.post(url, headers=self.headers, data=data, auth=self.auth)
         return res
 
     def patch(self, data, endpoint):
         url = self._host + endpoint
-        res = self._session.patch(url, data=data)
+        print(url)
+        res = requests.patch(url, headers=self.headers, data=data, auth=self.auth)
         return res
 
     def get(self, endpoint='', **kwargs):
@@ -55,6 +63,7 @@ class RestCalls():
 
     def delete(self, endpoint):
         url = self._host + endpoint
+        print(url)
         res = self._session.delete(url)
         return res
         
@@ -71,7 +80,7 @@ class SuperMicro():
         resp = self.switch.post('vlan:vlans',data)
         print (resp.status_code)
         print (resp.text)
-        if 200 == resp.status_code:
+        if 201 == resp.status_code:
             return 'Success'
         else:
             return 'Fail'
