@@ -54,7 +54,7 @@ Patch Vlan
     Should Be Equal  ${result.status_code}  ${200}
     ${json}=  Set Variable  ${result.json()}
     Log    ${json}
-    json property should equal    ${json}    openconfig-vlan:vlans    {"vlan":[{"config":{"name":"lab-test-vlan"},"vlan-id":33}]}   
+    json property should equal    ${json}    openconfig-vlan:vlans    {u"vlan":[{u"config":{u"name":u"lab-test-vlan"},u"vlan-id":33}]}   
 Delete VLAN
     [Documentation]    delete vlan in switch
     [Tags]    delete    vlan
