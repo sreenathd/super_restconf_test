@@ -90,6 +90,9 @@ def post(uri='',data=None):
     print(data)
     rest_session = get_session()
     #response = rest_session.post(data,uri)
+    headers = {
+        'Content-Type': 'application/yang-data+json',
+    }
     resp = requests.post('http://172.32.57.16:8538/restconf/data/running/openconfig-vlan:vlans', headers=headers, data=data, auth=('ADMIN', 'ADMIN'))
     return resp
 
