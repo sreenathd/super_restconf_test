@@ -92,8 +92,8 @@ def get(uri=''):
 
 def delete(uri=''):
     rest_session = get_session()
-    #resp = rest_session.delete(uri)
-    resp = requests.delete('http://172.31.57.16:8538/restconf/data/running/openconfig-vlan:vlans/vlan=33', auth=('ADMIN', 'ADMIN'))
+    resp = rest_session.delete(uri)
+    #resp = requests.delete('http://172.31.57.16:8538/restconf/data/running/openconfig-vlan:vlans/vlan=33', auth=('ADMIN', 'ADMIN'))
     #time.sleep(1)
     #data = '{"config":{"name":"lab-test-vlan33"},"vlan-id":33}'
     #response = requests.delete('http://172.31.57.16:8538/restconf/data/running/openconfig-vlan:vlans/vlan=33', auth=('ADMIN', 'ADMIN'))
