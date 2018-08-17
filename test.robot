@@ -63,6 +63,12 @@ Delete VLAN
     ${result}=  get    vlan:vlans/vlan=33/config/vlan-id
     Should Be Equal  ${result.status_code}  ${404}
     
+Post Log host
+    [Documentation]    Post Log Host
+    [Tags]    post    log
+    ${postresult}=    post    system:system/oc-log:logging/oc-log:remote-servers    {"oc-log:host":"192.189.7.6"}
+    Log    ${postresult.status_code}
+
     
 *** Keywords ***
 json_property_should_equal    
