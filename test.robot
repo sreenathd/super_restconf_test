@@ -24,7 +24,7 @@ Put Hostname
     Should Be Equal  ${result.status_code}  ${200}
     ${json}=  Set Variable  ${result.json()}
     Log    ${json}
-    json property should equal    ${json}    openconfig-system:system    {"config":{"hostname":"Switch1"}}
+    json property should equal    ${json}    openconfig-system:system    {u'config':{u'hostname':u'Switch1'}}
 Patch Hostname
     [Documentation]    Change host name of switch
     [Tags]    put    hostname
@@ -34,7 +34,7 @@ Patch Hostname
     Should Be Equal  ${result.status_code}  ${200}
     ${json}=  Set Variable  ${result.json()}
     Log    ${json}
-    json property should equal    ${json}    openconfig-system:system    {u"config":{u"hostname":u"Switch1"}}  
+    json property should equal    ${json}    openconfig-system:system    {u'config':{u'hostname':u'Switch1'}}  
 Post Vlan
     [Documentation]    Create vlan in switch
     [Tags]    post    vlan
@@ -44,7 +44,7 @@ Post Vlan
     Should Be Equal  ${result.status_code}  ${200}
     ${json}=  Set Variable  ${result.json()}
     Log    ${json}
-    json property should equal    ${json}    openconfig-vlan:vlans    {u"vlan":[{u"config":{u"vlan-id":33},u"vlan-id":33}]}
+    json property should equal    ${json}    openconfig-vlan:vlans    {u'vlan':[{u'config':{u'vlan-id':33},u'vlan-id':33}]}
 Patch Vlan
     [Documentation]    Update vlan in switch
     [Tags]    patch    vlan
@@ -54,7 +54,7 @@ Patch Vlan
     Should Be Equal  ${result.status_code}  ${200}
     ${json}=  Set Variable  ${result.json()}
     Log    ${json}
-    json property should equal    ${json}    openconfig-vlan:vlans    {u"vlan":[{u"config":{u"name":u"lab-test-vlan"},u"vlan-id":33}]}   
+    json property should equal    ${json}    openconfig-vlan:vlans    {u'vlan':[{u'config':{u'name':u'lab-test-vlan'},u'vlan-id':33}]}   
 Delete VLAN
     [Documentation]    delete vlan in switch
     [Tags]    delete    vlan
