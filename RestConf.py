@@ -49,6 +49,7 @@ class RestCalls():
 
     def patch(self, data, endpoint):
         url = self._host + endpoint
+        print(data)
         print(url)
         res = requests.patch(url, headers=self.headers, data=data, auth=self.auth)
         return res
